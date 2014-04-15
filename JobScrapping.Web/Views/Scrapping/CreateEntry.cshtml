@@ -1,0 +1,76 @@
+﻿@model JobScrapping.Web.ViewModels.CreateEntryViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form test</title>
+
+    <!--<!-- Bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div>                
+        <article>Place the proper xpath to the appropriate fields. 
+            Use the scrapper add-on to scrape the list xpath and 
+            the developer tools to scrape fields xpath on the detail page.
+            
+            Click <a href="@Model.ScrappingUrl">here</a> to open the external website that you need to scrape.
+        </article>                
+
+        <form role="form" class="form-horizontal" action="http://workersandbox.mturk.com/mturk/externalSubmit" method="POST">
+            
+            @Html.HiddenFor(m=> m.AssignmentId)            
+
+            <div class="form-group has-success has-feedback">
+                <label for="txtDetailLinkUrl" class="control-label col-sm-2">Detail link url xpath: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="txtDetailLinkUrl" name="txtDetailLinkUrl" placeholder="Enter xpath" />
+                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>                
+            </div>
+            <div class="form-group has-success has-feedback">
+                <label for="txtJobTitleXPath" class="control-label col-sm-2">Job title xpath: </label> 
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="txtJobTitleXPath" name="txtJobTitleXPath" placeholder="Enter xpath" />
+                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>                            
+            </div>
+            <div class="form-group has-success has-feedback">
+                <label for="txtJobDescXPath" class="control-label col-sm-2">Job desc xpath: </label> 
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="txtJobDescXPath" name="txtJobDescXPath" placeholder="Enter xpath" />
+                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>                            
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    @*<button type="submit" class="btn btn-default col-sm-2">Submit</button>*@
+                     <input type="submit" class="btn btn-default col-sm-2" value="Create" />
+                    <button type="reset" class="btn btn-default col-sm-offset-1 col-sm-2">Cancel</button>
+                </div>            
+            </div>
+        </form>
+    </div>
+</body>
+</html>
